@@ -27,7 +27,6 @@ episodeList.forEach(e => {
   title.style.padding = "1px";
   const imgBox = document.createElement('img');
   const para = document.createElement('p');
-  para.style.backgroundColor= "#eee"
   rootElem.appendChild(boxBody);
   boxBody.appendChild(title);
   boxBody.appendChild(imgBox);
@@ -37,7 +36,7 @@ episodeList.forEach(e => {
   para.innerHTML = e.summary;
   para.style.fontFamily = " Georgia, 'Times New Roman', Times, serif";
   para.style.fontSize = "smaller";
-  para.style.paddingBottom = "0.4em";
+  para.style.margin = "0.3em";
   para.style.paddingLeft = "0.3em";
   para.style.paddingRight = "0.3em";
   
