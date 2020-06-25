@@ -1,6 +1,6 @@
 body{
-  background-color: #fd94ad;
-  color : brown;
+  background-image: url(https://cdn.pixabay.com/photo/2017/08/10/02/05/tiles-shapes-2617112_960_720.jpg);
+  color : rgb(131, 16, 139);
 }
 #root {
  display: flex;
@@ -10,8 +10,26 @@ body{
 font-family: Georgia, 'Times New Roman', Times, serif;
 font-size: smaller;
 }
-/* #nav {
+ #search-bar {
   width: auto;
   height: 75px;
-  background-color: rgb(241, 252, 229);
-} */
+} 
+#search {
+  width: 24%;
+  height: 23px;
+  position: relative;
+  left: 70px;
+  top: 20px;
+  border-radius: 10px;
+  background-color: rgb(205, 223, 255);
+}
+#display{
+  border:1px solid rgb(248, 248, 253);
+  width: 15% ;
+  position: relative;
+  left: 320px;
+  bottom: 21px;
+  background-color: rgb(255, 245, 245);
+  border-radius: 7px;
+  border-bottom: 1.5px dotted rgb(253, 16, 182);
+}
