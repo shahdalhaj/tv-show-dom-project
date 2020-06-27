@@ -1,22 +1,19 @@
 //You can edit ALL of the code here
 function setup() {
-  const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
 }
 const rootElem = document.getElementById("root");
+const allEpisodes = getAllEpisodes();
+
 function makePageForEpisodes(episodeList) {
-
-const display = document.getElementById("display");
-display.innerText = " Display: 0/73";
-
- 
- /* rootElem.textContent = `Got ${episodeList.length} episode(s)`; */
- 
+  const display = document.getElementById("display");
+  display.innerText = `Displaying ${episodeList.length}/${allEpisodes.length}`;
+  rootElem.innerHTML = "";
 episodeList.forEach(e => {
   const boxBody = document.createElement('div');
   boxBody.style.display ="flex";
   boxBody.style.flexDirection = "column";
-  boxBody.style.backgroundColor = "black";
+  boxBody.style.backgroundColor = "rgb(230, 252, 243)";
   boxBody.style.margin ="1.5em";
   boxBody.style.width ="250px";
   boxBody.style.height ="330px";
@@ -44,21 +41,21 @@ episodeList.forEach(e => {
   para.style.margin = "0.3em";
   para.style.paddingLeft = "0.3em";
   para.style.paddingRight = "0.3em";
-  
  /*  console.log(rootElem) */
 });
 }
 //setting the filterd search results 
-const myInput = document.getElementById("search");
-//const myList = document.getElementsById("list");
-
-
-
-
-  myInput.addEventListener('keyup', function(){
-    const result = this.value.toLowerCase();
-    console.log(result)
-    });
+let searchBar = document.getElementById("search");
+searchBar.addEventListener("keyup", function(p){
+  let filteredValue = p.target.value;
+  filteredValue = filteredValue.toLowerCase();
+ let filteredList = allEpisodes.filter((result)=>{
+   let name = result.name;
+   let text = result.summary;
+  return name.includes(filteredValue)||text.includes(filteredValue)
+  })
+  makePageForEpisodes(filteredList);
+});
  
   
 
