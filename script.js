@@ -7,21 +7,23 @@ const allEpisodes = getAllEpisodes();
 
 function makePageForEpisodes(episodeList) {
   const display = document.getElementById("display");
-  display.innerText = `Displaying ${episodeList.length}/${allEpisodes.length}`;
+  display.innerText = `Display ${episodeList.length}/${allEpisodes.length}`;
   rootElem.innerHTML = "";
-episodeList.forEach(e => {
+  episodeList.forEach(e => {
   const boxBody = document.createElement('div');
   boxBody.style.display ="flex";
   boxBody.style.flexDirection = "column";
   boxBody.style.backgroundColor = "rgb(230, 252, 243)";
   boxBody.style.margin ="1.5em";
   boxBody.style.width ="250px";
-  boxBody.style.height ="330px";
-  boxBody.style.border ="3px solid black";
-  boxBody.style.borderRadius = "9px";
+  boxBody.style.height ="380px";
+  boxBody.style.borderTop ="1px solid black";
+  boxBody.style.borderBottom ="1px solid black";
+  boxBody.style.borderLeft ="1.5px solid black";
+  boxBody.style.borderRadius = "4px";
   const title = document.createElement('h3');
   title.style.textAlign = "center";
-  title.style.color = "#f14268";
+  title.style.color = "coral";
   title.style.backgroundColor = "#eee";
   title.style.border = "1px solid #e6f7b0"
   title.style.borderRadius = "7px"
@@ -37,13 +39,14 @@ episodeList.forEach(e => {
   imgBox.src = e.image.medium;
   para.innerHTML = e.summary;
   para.style.fontFamily = " Georgia, 'Times New Roman', Times, serif";
-  para.style.fontSize = "smaller";
+  para.style.fontSize = "12px";
   para.style.margin = "0.3em";
   para.style.paddingLeft = "0.3em";
   para.style.paddingRight = "0.3em";
  /*  console.log(rootElem) */
 });
 }
+
 //setting the filterd search results 
 let searchBar = document.getElementById("search");
 searchBar.addEventListener("keyup", function(p){
@@ -56,7 +59,29 @@ searchBar.addEventListener("keyup", function(p){
   })
   makePageForEpisodes(filteredList);
 });
- 
-  
+ //display the Episodes on the selector menu
+ const myList = document.getElementById("list");
+let menu = allEpisodes.forEach(element => {
+  let options = document.createElement('option');
+  options.innerHTML =  `${element.name}`
+  +  `-S${element.season.toString().padStart(2,'0')}E${element.number.toString().padStart(2,'0')}`;
+  myList.appendChild(options)
+});
+// episode selector/picker
+myList.addEventListener("change",function(w){
+let selector = w.target.value;
+let chosenEpi = allEpisodes.filter((key)=>{
+key =  `${key.name}`
++  `-S${key.season.toString().padStart(2,'0')}E${key.number.toString().padStart(2,'0')}`;
+return key === selector
+});
+
+  makePageForEpisodes(chosenEpi) 
+
+
+});
+
+
+
 
 window.onload = setup;

@@ -15,21 +15,31 @@ font-size: smaller;
   height: 75px;
 } 
 #search {
-  width: 24%;
+  width: 40%;
   height: 23px;
   position: relative;
-  left: 70px;
-  top: 20px;
+  left: 280px;
+  top: 25px;
   border-radius: 10px;
   background-color: rgb(205, 223, 255);
 }
 #display{
   border:1px solid rgb(248, 248, 253);
-  width: 15% ;
+  width: 10% ;
+  height:23px ;
   position: relative;
-  left: 320px;
-  bottom: 21px;
+  left: 700px;
+  bottom: 18px;
   background-color: rgb(255, 245, 245);
   border-radius: 7px;
   border-bottom: 1.5px dotted rgb(253, 16, 182);
 }
+#list{
+  position: relative;
+  bottom: 59px;
+  left: 80px;
+  width: 180px;
+  height: 26px;
+  background-color: rgb(205, 223, 255);
+}
+
