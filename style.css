@@ -10,6 +10,34 @@ body{
 font-family: Georgia, 'Times New Roman', Times, serif;
 font-size: smaller;
 }
+#boxBody {
+  width: 280px;
+  height: 350px;
+  display:flex;
+  flex-direction: column;
+  background-color: rgb(230, 252, 243);
+  margin: 1em;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1.5px solid black;
+  border-radius: 4px;
+}
+#title{
+  text-align: center;
+  color: coral;
+  background-color: rgb(178, 250, 202);
+  border:1px solid #e6f7b0 ;
+  border-radius: 7px;
+  padding: 1px;
+}
+#para{
+  font-family:  'Arial Narrow Bold', sans-serif;
+  font-size: 12px;
+  margin: 0.3em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+
+}
  #search-bar {
   width: auto;
   height: 75px;
@@ -29,14 +57,14 @@ font-size: smaller;
   height:23px ;
   position: relative;
   left: 700px;
-  bottom: 18px;
+  bottom: 47px;
   background-color: rgb(255, 245, 245);
   border-radius: 7px;
   border-bottom: 1.5px dotted rgb(253, 16, 182);
 }
 #list{
   position: relative;
-  bottom: 59px;
+  bottom: 3px;
   left: 80px;
   width: 180px;
   height: 26px;
