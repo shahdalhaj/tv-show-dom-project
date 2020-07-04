@@ -4,10 +4,14 @@ const dropDown = document.getElementById("list");
 const allEpisodes = getAllEpisodes();
 const searchBar = document.getElementById("search");
 const display = document.getElementById("display");
+const btn = document.getElementById("btn")
 
 
 function setup() {
   makePageForEpisodes(allEpisodes);
+}
+function shower() {
+  makePageForEpisodes(allEpisodes)
 }
 
 
