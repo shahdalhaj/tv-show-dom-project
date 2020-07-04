@@ -19,9 +19,7 @@ function makePageForEpisodes(episodeList) {
   const para = document.createElement('p');
   para.id = "para"
   rootElem.appendChild(boxBody);
-  boxBody.appendChild(title);
-  boxBody.appendChild(imgBox);
-  boxBody.appendChild(para);
+  boxBody.append(title,imgBox,para);
   title.innerHTML = `${e.name}`
   +`-S${e.season.toString().padStart(2,'0')}E${e.number.toString().padStart(2,'0')}`;
   imgBox.src = e.image.medium;
@@ -34,32 +32,38 @@ let searchBar = document.getElementById("search");
 searchBar.addEventListener("keyup", function(p){
   let filteredValue = p.target.value;
  let filteredList = allEpisodes.filter((result)=>{
-   let name = result.name;
+   let namee = result.name;
    let text = result.summary;
-  return name.toLowerCase().includes(filteredValue)||text.toLowerCase().includes(filteredValue)
+  return namee.toLowerCase().includes(filteredValue.toLowerCase())||text.toLowerCase().includes(filteredValue.toLowerCase())
   })
   makePageForEpisodes(filteredList);
 });
- //display the Episodes on the selector menu
- const myList = document.getElementById("list");
+
+
+ //display the Episodes on the selector menu/dropDown
+ const dropDown = document.getElementById("list");
 allEpisodes.forEach(element => {
   let options = document.createElement('option');
   options.innerHTML = `S${element.season.toString().padStart(2,'0')}E${element.number.toString().padStart(2,'0')}-${element.name}`;
-  myList.appendChild(options)
-});
-// episode selector/picker
-myList.addEventListener("change",function(w){
-let selector = w.target.value;
-let chosenEpi = allEpisodes.filter((match)=>{
-match =  `${match.name}`
-+  `-S${match.season.toString().padStart(2,'0')}E${match.number.toString().padStart(2,'0')}`;
-return match === selector
+  dropDown.appendChild(options)
 });
 
-  makePageForEpisodes(chosenEpi) 
+
+// episode selector/picker
+ dropDown.addEventListener("change",function(w){
+let selector = w.target.value;
+let chosenEpi = allEpisodes.filter((match)=>{
+match = `S${match.season.toString().padStart(2,'0')}E${match.number.toString().padStart(2,'0')}-${match.name}`;
+return match === selector ;
 });
-//when i click on an episode name from the select box/menu i can get the episode but i can not go back to display all the episode again when i select the first option "select an episode " i want a hint or idea of how to fix that i tried to add if statement to my filter and still did not work if(match === selector){return makePageForEpisodes(chosenEpi)}else{makePageForEpisodes};
-//
+if (selector === "Select an Episode") {
+  return makePageForEpisodes(allEpisodes)
+} else {
+  return makePageForEpisodes(chosenEpi)
+}
+}); 
+
+
 
 
 
