@@ -1,14 +1,19 @@
 //You can edit ALL of the code here
+const rootElem = document.getElementById("root");
+const dropDown = document.getElementById("list");
+const allEpisodes = getAllEpisodes();
+const searchBar = document.getElementById("search");
+const display = document.getElementById("display");
+
+
 function setup() {
   makePageForEpisodes(allEpisodes);
 }
-const rootElem = document.getElementById("root");
-const allEpisodes = getAllEpisodes();
+
 
 function makePageForEpisodes(episodeList) {
   rootElem.innerHTML = "";
-  const display = document.getElementById("display");
-  display.innerText = `Display ${episodeList.length}/${allEpisodes.length}`;
+  display.innerText = `Display: ${episodeList.length}/${allEpisodes.length}`;
   episodeList.forEach(e => {
   const boxBody = document.createElement('div');
   boxBody.id = "boxBody";
@@ -28,7 +33,6 @@ function makePageForEpisodes(episodeList) {
 }
 
 //setting the filterd search results 
-let searchBar = document.getElementById("search");
 searchBar.addEventListener("keyup", function(p){
   let filteredValue = p.target.value;
  let filteredList = allEpisodes.filter((result)=>{
@@ -41,7 +45,6 @@ searchBar.addEventListener("keyup", function(p){
 
 
  //display the Episodes on the selector menu/dropDown
- const dropDown = document.getElementById("list");
 allEpisodes.forEach(element => {
   let options = document.createElement('option');
   options.innerHTML = `S${element.season.toString().padStart(2,'0')}E${element.number.toString().padStart(2,'0')}-${element.name}`;
@@ -62,11 +65,6 @@ if (selector === "Select an Episode") {
   return makePageForEpisodes(chosenEpi)
 }
 }); 
-
-
-
-
-
 
 
 window.onload = setup;
