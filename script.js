@@ -5,10 +5,28 @@ const allEpisodes = getAllEpisodes();
 const searchBar = document.getElementById("search");
 const display = document.getElementById("display");
 const btn = document.getElementById("btn")
+//const allShows = getAllShows();
+let shows = [];
 
+
+function ShowDisplayer(){
+  fetch(`https://api.tvmaze.com/shows/82/episodes`)
+  .then(response => response.json())
+  .then((data) =>{ shows = [...data] 
+  makePageForEpisodes(data)
+  displayer(data)
+  episodeFilter(data)
+  dropDownSelection(shows)})
+  .catch((error) => console.log(error));
+  
+}
 
 function setup() {
+  ShowDisplayer()
   makePageForEpisodes(allEpisodes);
+  displayer()
+  episodesFilter()
+  dropDownSelection()
 }
 function shower() {
   makePageForEpisodes(allEpisodes)
@@ -37,26 +55,33 @@ function makePageForEpisodes(episodeList) {
 }
 
 //setting the filterd search results 
-searchBar.addEventListener("keyup", function(p){
-  let filteredValue = p.target.value;
- let filteredList = allEpisodes.filter((result)=>{
-   let namee = result.name;
-   let text = result.summary;
-  return namee.toLowerCase().includes(filteredValue.toLowerCase())||text.toLowerCase().includes(filteredValue.toLowerCase())
-  })
-  makePageForEpisodes(filteredList);
-});
+function episodesFilter() {
+  searchBar.addEventListener("keyup", function(p){
+    let filteredValue = p.target.value;
+   let filteredList = allEpisodes.filter((result)=>{
+     let namee = result.name;
+     let text = result.summary;
+    return namee.toLowerCase().includes(filteredValue.toLowerCase())||text.toLowerCase().includes(filteredValue.toLowerCase())
+    })
+    makePageForEpisodes(filteredList);
+  });
+}
+
 
 
  //display the Episodes on the selector menu/dropDown
-allEpisodes.forEach(element => {
-  let options = document.createElement('option');
-  options.innerHTML = `S${element.season.toString().padStart(2,'0')}E${element.number.toString().padStart(2,'0')}-${element.name}`;
-  dropDown.appendChild(options)
-});
+ function displayer() {
+  allEpisodes.forEach(element => {
+    let options = document.createElement('option');
+    options.innerHTML = `S${element.season.toString().padStart(2,'0')}E${element.number.toString().padStart(2,'0')}-${element.name}`;
+    dropDown.appendChild(options)
+  });
+ }
+
 
 
 // episode selector/picker
+function dropDownSelection(){
  dropDown.addEventListener("change",function(w){
 let selector = w.target.value;
 let chosenEpi = allEpisodes.filter((match)=>{
@@ -69,6 +94,6 @@ if (selector === "Select an Episode") {
   return makePageForEpisodes(chosenEpi)
 }
 }); 
-
+}
 
 window.onload = setup;
