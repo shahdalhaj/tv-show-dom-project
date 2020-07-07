@@ -22,9 +22,7 @@ let showId = allShows.map(el=> el.id);
   .catch((error) => console.log(error));
 } 
 
-function makeListForEchEpi(episodes) {
-  episodes.forEach((episode) => dropDownSelection(episode));
-}
+
  //sorting alphabetically before display on select list
 const sorted = allShows.sort(function(a, b) {
   var nameA = a.name.toUpperCase(); 
@@ -139,9 +137,7 @@ function showDropDownSelection() {
     }
   })
 }
- function makeListForEachShow(episode) {
-   
- }
+ 
 
 function setup() {
   showsDropDownMenu()
