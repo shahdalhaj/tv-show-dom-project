@@ -1,59 +1,27 @@
 //You can edit ALL of the code here
 const rootElem = document.getElementById("root");
 const dropDown = document.getElementById("list");
-const allEpisodes = getAllEpisodes();
+let allEpisodes = getAllEpisodes();
 const searchBar = document.getElementById("search");
 const display = document.getElementById("display");
 const btn = document.getElementById("btn")
-const allShows = getAllShows();
+let allShows = getAllShows();
 const showDropDown = document.getElementById("showList")
 let initialId = "82";
 let shows = [];
 
 let showId = allShows.map(el=> el.id);
-//console.log(showId)
 
  function showDisplayer(showId){
   fetch(`https://api.tvmaze.com/shows/${showId}/episodes`)
   .then(response => response.json())
   .then((data) =>{ shows = [...data] 
   makePageForEpisodes(data)
+  allEpisodes = data
+  displayer()
   dropDownSelection(data)})
-  .then(searchBar.addEventListener("keyup",episodesFilter))
   .catch((error) => console.log(error));
 } 
-
-//i can not link my episodes dropdown menu and my search bar to the show chosen from the show dropdown menu how to conect/linck/relate them together because it still displaying he default episodes even if i change the show
-
- //sorting alphabetically before display on select list
-const sorted = allShows.sort(function(a, b) {
-  var nameA = a.name.toUpperCase(); 
-  var nameB = b.name.toUpperCase(); 
-  if (nameA < nameB) {
-    return -1; 
-  }
-  if (nameA > nameB) {
-    return 1; 
-  }
-  return 0;  
-});
-
-
-console.log(allShows)
-// Display shows Dropdown
-function showsDropDownMenu() {
-   for (let x = 0; x < sorted.length; x++) {
-    let showOptions = document.createElement('option');
-    showOptions.innerText =`${sorted[x].name}`;
-    showDropDown.appendChild(showOptions)
-   }
-   }
-
-
-function shower() {
-  makePageForEpisodes(allEpisodes)
-}
-
 
 function makePageForEpisodes(episodeList) {
   rootElem.innerHTML = "";
@@ -76,7 +44,6 @@ function makePageForEpisodes(episodeList) {
 });
 }
 
-
 //setting the filterd search results 
 function episodesFilter() {
   searchBar.addEventListener("keyup", function(p){
@@ -90,10 +57,9 @@ function episodesFilter() {
   });
 }
 
-
-
  //display the Episodes on the selector menu/dropDown
  function displayer() {
+   dropDown.innerHTML = "";
   allEpisodes.forEach(element => {
     let options = document.createElement('option');
     options.innerText = `S${element.season.toString().padStart(2,'0')}E${element.number.toString().padStart(2,'0')}-${element.name}`;
@@ -102,11 +68,10 @@ function episodesFilter() {
  }
 
 
-
 // episode selector/picker
-function dropDownSelection(){
- dropDown.addEventListener("change",function(w){
-let selector = w.target.value;
+ dropDown.addEventListener("change",dropDownSelection)
+function dropDownSelection(selector){
+selector = event.target.value
 let chosenEpi = allEpisodes.filter((match)=>{
 match = `S${match.season.toString().padStart(2,'0')}E${match.number.toString().padStart(2,'0')}-${match.name}`;
 return match === selector ;
@@ -116,27 +81,45 @@ if (selector === "Select an Episode") {
 } else {
   return makePageForEpisodes(chosenEpi)
 }
-}); 
-}
+} 
+
+// Display shows Dropdown
+function showsDropDownMenu() {
+  for (let x = 0; x < sorted.length; x++) {
+   let showOptions = document.createElement('option');
+   showOptions.innerText =`${sorted[x].name}`;
+   showDropDown.appendChild(showOptions)
+  }
+  }
+
+ //sorting alphabetically before display on select list
+ const sorted = allShows.sort(function(a, b) {
+  var nameA = a.name.toUpperCase(); 
+  var nameB = b.name.toUpperCase(); 
+  if (nameA < nameB) {
+    return -1; 
+  }
+  if (nameA > nameB) {
+    return 1; 
+  }
+  return 0;  
+});
 
 //show Selector based on the show id
-function showDropDownSelection() {
-  showDropDown.addEventListener("change",function(o){
-    let selector2 = o.target.value;
-    console.log(selector2)
-    let chosenShow = sorted.filter((find)=>{
-      find = find.name ;
-      return selector2 === find;
+showDropDown.addEventListener("change",showDropDownSelection)
+function showDropDownSelection(selector2) {
+   selector2 = event.target.value;
+    let chosenShow = sorted.filter((match2)=>{
+      match2 = `${match2.name}`;
+      return match2 === selector2 ;
     })
-    if (selector2 === "Show Selector") {
+     if (selector2 === "Show Selector") {
       return showDisplayer(initialId)
     } else {
       return showDisplayer(chosenShow[0].id)
     }
-  })
 }
  
-
 function setup() {
   showsDropDownMenu()
   showDisplayer(initialId)
@@ -144,7 +127,11 @@ function setup() {
   displayer()
   episodesFilter()
   dropDownSelection()
-  showDropDownSelection()
+  showDropDownSelection(allShows)
+}
+
+function shower() {
+  makePageForEpisodes(allEpisodes)
 }
 
 window.onload = setup;
