@@ -19,9 +19,11 @@ let showId = allShows.map(el=> el.id);
   .then((data) =>{ shows = [...data] 
   makePageForEpisodes(data)
   dropDownSelection(data)})
+  .then(searchBar.addEventListener("keyup",episodesFilter))
   .catch((error) => console.log(error));
 } 
 
+//i can not link my episodes dropdown menu and my search bar to the show chosen from the show dropdown menu how to conect/linck/relate them together because it still displaying he default episodes even if i change the show
 
  //sorting alphabetically before display on select list
 const sorted = allShows.sort(function(a, b) {
@@ -46,10 +48,6 @@ function showsDropDownMenu() {
     showDropDown.appendChild(showOptions)
    }
    }
-
-
-
-
 
 
 function shower() {
