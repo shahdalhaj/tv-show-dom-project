@@ -21,7 +21,12 @@
         <option>Select an Episode </option>
       </select>
     </form>
-    <button id ="btn" onclick="shower()">Show all Episodes</button>
+    <form>
+      <select id="showList" >
+        <option>Show Selector</option>
+      </select>
+    </form>
+    <button id ="btn" onclick="shower()">all Episodes</button>
     <p id="display"></p>
     </div>
     <div id="root">
@@ -29,6 +34,7 @@
    <footer id="footer"> Tv show project by Shahd - source &copy;tvmaze.com</footer>
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
+    
     <script src="shows.js"></script>
 
 
