@@ -25,7 +25,7 @@ let showId = allShows.map(el=> el.id);
 function makeListForEchEpi(episodes) {
   episodes.forEach((episode) => dropDownSelection(episode));
 }
- //sorting based on alphabetically before display on select list
+ //sorting alphabetically before display on select list
 const sorted = allShows.sort(function(a, b) {
   var nameA = a.name.toUpperCase(); 
   var nameB = b.name.toUpperCase(); 
