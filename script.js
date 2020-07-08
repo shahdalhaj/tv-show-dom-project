@@ -25,7 +25,7 @@ let showId = allShows.map(el=> el.id);
 
 function makePageForEpisodes(episodeList) {
   rootElem.innerHTML = "";
-  display.innerText = `Display: ${episodeList.length}/${allShows.length}`;
+  display.innerText = `Display: ${episodeList.length}/${allEpisodes.length}`;
   episodeList.forEach(e => {
   const boxBody = document.createElement('div');
   boxBody.id = "boxBody";
@@ -45,16 +45,16 @@ function makePageForEpisodes(episodeList) {
 }
 
 //setting the filterd search results 
-function episodesFilter() {
-  searchBar.addEventListener("keyup", function(p){
-    let filteredValue = p.target.value;
+searchBar.addEventListener("keyup",episodesFilter)
+function episodesFilter(event) {
+    let filteredValue = event.target.value;
    let filteredList = allEpisodes.filter((result)=>{
      let namee = result.name;
      let text = result.summary;
     return namee.toLowerCase().includes(filteredValue.toLowerCase())||text.toLowerCase().includes(filteredValue.toLowerCase())
     })
     makePageForEpisodes(filteredList);
-  });
+ 
 }
 
  //display the Episodes on the selector menu/dropDown
@@ -70,7 +70,10 @@ function episodesFilter() {
 
 // episode selector/picker
  dropDown.addEventListener("change",dropDownSelection)
-function dropDownSelection(selector){
+function dropDownSelection(event){
+if(!event || !event.target) {
+  return makePageForEpisodes(allEpisodes)
+}
 selector = event.target.value
 let chosenEpi = allEpisodes.filter((match)=>{
 match = `S${match.season.toString().padStart(2,'0')}E${match.number.toString().padStart(2,'0')}-${match.name}`;
@@ -107,7 +110,7 @@ function showsDropDownMenu() {
 
 //show Selector based on the show id
 showDropDown.addEventListener("change",showDropDownSelection)
-function showDropDownSelection(selector2) {
+function showDropDownSelection(event) {
    selector2 = event.target.value;
     let chosenShow = sorted.filter((match2)=>{
       match2 = `${match2.name}`;
@@ -125,9 +128,8 @@ function setup() {
   showDisplayer(initialId)
   makePageForEpisodes(allEpisodes);
   displayer()
-  episodesFilter()
-  dropDownSelection()
-  showDropDownSelection(allShows)
+ // episodesFilter()
+  //showDropDownSelection(allShows)
 }
 
 function shower() {

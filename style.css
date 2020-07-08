@@ -1,23 +1,23 @@
 body{
-  background-image: url(https://cdn.pixabay.com/photo/2017/03/27/14/31/astronomy-2179083__340.jpg); 
- 
-  color : rgb(5, 28, 71);
+  background-color: rgba(203, 208, 209, 0.863); 
+  color : rgb(60, 5, 71);
   font-style: oblique;
 }
-#root {
+#root{
  display: flex;
  align-items: center;
  justify-content: center;
  flex-wrap: wrap;
 font-family: Georgia, 'Times New Roman', Times, serif;
 font-size: smaller;
+margin-top: 9rem;
 }
-#boxBody {
+#boxBody{
   width: 300px;
   height: 370px;
   display:flex;
   flex-direction: column;
-  background-color: rgb(250, 185, 223);
+  background-color: rgba(247, 231, 94, 0.904);
   margin: 1em;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
@@ -37,22 +37,21 @@ font-size: smaller;
 #header{
   width: 100%;
   height: 100px;
-  background-color: rgba(141, 236, 248, 0.747);
-  border: 1px solid rgb(47, 255, 168);
-  border-radius: 1em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url(https://tse3.mm.bing.net/th?id=OIP.sc1j6AQYUFGZRfU4-vPgIAHaNJ&pid=Api&P=0&w=300&h=300);
+  border: 1px solid rgb(13, 13, 70);
+ left: 0px;
+ position: fixed;
+ top: 0em;
 }
-/* #p{
-border: 1px solid white ;
-border-radius: 2em;
-background-color: rgba(231, 12, 96, 0.61);
-font-size: xx-large;
-font-style: oblique;
-padding: 0.8em;
-color: rgb(201, 247, 117);
-} */
+#icon{
+  width: 200px;
+  height: 70px;
+  background-image: url(https://tse1.mm.bing.net/th?id=OIP.PTXuofElSWZttJqYrrDc5QAAAA&pid=Api&P=0&w=253&h=80);
+  background-size: contain;
+  position: fixed;
+  right: 20px;
+}
+
 #title{
   text-align: center;
   color: rgb(209, 12, 121);
@@ -67,22 +66,22 @@ color: rgb(201, 247, 117);
   margin: 0.3em;
   padding-left: 0.3em;
   padding-right: 0.3em;
-
+  color: black;
 }
- #search-bar {
+ /* #search-bar {
   width: auto;
   height: 78px;
   display: flex;
   align-items: flex-start;
- 
-
-} 
+}  */
 #search {
-  width: 30%;
-  margin-left: 20px;
+  width: 25%;
   height: 30px;
-  position: relative;
- bottom: 80px;
+  margin-left: 20px;
+  z-index: 100;
+  position: fixed;
+  left: 370px;
+  top: 55px;
   border-radius: 10px;
   background-color: rgb(205, 223, 255);
 }
@@ -90,21 +89,27 @@ color: rgb(201, 247, 117);
   border:1px solid rgb(21, 21, 29);
   width: 12% ;
   height:23px ;
-  position: relative;
-  right: 560px;
-  bottom: 50px;
+  z-index: 100;
+  position: fixed;
+  padding-left: 7px;
+  padding-top: 2px;
+  left: 20px;
+  top: 14px;
   background-color: rgb(205, 223, 255);
-  border-radius: 7px;
-  border-bottom: 1.5px dotted rgb(253, 16, 182);
+  border-radius: 6px;
+  border-bottom: 1.5px solid rgb(205, 223, 255);
 }
 #btn{
-  position: relative;
- right: 350px;
- bottom: 64px;
+  position: fixed;
+  right: 267px;
+  top: 63px;
+  z-index: 100;
+  font-style: oblique;
+  height: 23px;
   padding: 0.2em;
   background-color: rgb(245, 153, 153);
-  border-radius: 10px;
-  margin-left: 3px;
+  border: 1px solid rgb(245, 153, 153);
+  border-radius: 6px;
 }
 #btn:hover{
   background-color: rgb(136, 238, 252);
@@ -112,19 +117,21 @@ color: rgb(201, 247, 117);
 #list{
   width: 180px;
   height: 26px;
+  z-index: 100;
   background-color: rgb(205, 223, 255);
-  position: relative;
-  left: 20px;
-  bottom:34px;
+  position:fixed;
+  top: 65px;
+  left: 19px;
   border-radius: 2em;
 }
 #showList{
   width: 180px;
   height: 26px;
+  z-index: 100;
   background-color: rgb(205, 223, 255);
-  position: relative;
-  right: 480px;
-  bottom:34px;
+  position:fixed;
+  top: 65px;
+  left: 205px;
   border-radius: 2em;
 }
 #footer{
@@ -132,7 +139,6 @@ color: rgb(201, 247, 117);
   padding: 1.6em;
  border-radius: 7px;
   border-top: 1px solid rgb(194, 14, 179);
-
   color :rgb(54, 3, 3);
 }
 
