@@ -142,13 +142,14 @@ function clearEverything() {
   rootElem.innerHTML ="";
  dropDown.style.display = "none";
  btn.style.display = "none"
-  showListMaker();
+  showListMaker(allShows);
+
 }
 
 console.log(allShows)
 
 
-function showListMaker() {
+function showListMaker(showList) {
   allShows.forEach(show=>{
   let showSlider = document.getElementById("showSlide")
 let containerBox = document.createElement("div");
@@ -169,7 +170,7 @@ let containerBox = document.createElement("div");
   status.id = "status";
   let runTime = document.createElement("p");
   runTime.id = "time";
-
+    display.innerHTML = `display: ${showList.length}/${allShows.length} `
     showTitle.innerHTML = `${show.name}`;
     showImage.src = show.image.medium;
     showSummary.innerHTML = `${show.summary}`
@@ -181,7 +182,6 @@ let containerBox = document.createElement("div");
      showSlider.appendChild(containerBox)
      containerBox.append(showTitle,showImage ,showSummary,showInfo )
      showInfo.append(rating,genres,status,runTime)
-    
   });
   
 
