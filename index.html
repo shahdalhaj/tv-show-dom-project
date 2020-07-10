@@ -3,17 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | My Name (My GitHub username)</title>
+    <title>TV Show Project | Shahd (shahdalhaj)</title>
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
+    <nav id="header">
+    <p id ="p"></p>
+    <div id ="icon"></div>
+    </nav>
+    <div id="search-bar">
+      
+    <input type="text" placeholder="search"  id="search" name="search">
+    
+    <form>
+      <select id="list" >
+        <option>Select an Episode </option>
+      </select>
+    </form>
+    <form>
+      <select id="showList" >
+        <option>Show Selector</option>
+      </select>
+    </form>
+    <button id ="btn" onclick="shower()">all Episodes</button>
+    <p id="display"></p>
+    </div>
     <div id="root">
     </div>
-
+    <div id = "showSlide"></div>
+   <footer id="footer"> Tv show project by Shahd - source &copy;tvmaze.com</footer>
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
+    
+    <script src="shows.js"></script>
+
+
 
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
