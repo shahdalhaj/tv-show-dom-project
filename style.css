@@ -1,5 +1,5 @@
 body{
-  background-color: rgba(203, 208, 209, 0.863); 
+  background-color: rgb(205, 223, 255); 
   color : rgb(60, 5, 71);
   font-style: oblique;
 }
@@ -11,6 +11,105 @@ body{
 font-family: Georgia, 'Times New Roman', Times, serif;
 font-size: smaller;
 margin-top: 9rem;
+}
+#showSlide{
+  align-items: center;
+  justify-content: center;
+display: flex;
+flex-wrap: wrap;
+height: 100%;
+width: 100%;
+}
+#container{
+background-color: black;
+  width: 800px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30%;
+  margin-bottom: 0.5em;
+}
+#showTitle{
+ position:relative;
+ background-color: ivory;
+ bottom: 200px;
+ left: 20px;
+ height: 25px;
+ padding: 3px;
+ border-radius: 3rem;
+font-size: x-large;
+background-color: rgb(253, 227, 227);
+color: rgb(228, 3, 59);
+border: 3px solid rgb(20, 216, 241);
+}
+#image{
+ border-radius: 40%;
+ width: 240px;
+ height: 350px ;
+ position: absolute;
+ left: 120px;
+
+ border: 3px solid rgb(20, 216, 241);
+}
+#summary{
+  width:330px;
+  height: 400px;
+  background-color: rgb(223, 217, 217);
+  position: absolute;
+  left: 370px;
+ font-size:12px;
+ 
+ font-weight: 600;
+ color: rgb(158, 15, 51);
+ border: 3px solid rgb(20, 216, 241);
+ border-radius: 10%;
+ text-align: center;
+ margin-top: 2.5em;
+}
+#info{
+  background-color: rgb(226, 216, 216);
+  width: 180px;
+  height: 20px;
+  position:absolute;
+  right: 110px;
+  border: 3px solid rgb(20, 216, 241);
+  border-radius: 7px;
+  color: rgb(158, 15, 51) ;
+  font-size: small;
+}
+#genres{
+  background-color: rgb(226, 216, 216);
+  width: 180px;
+  height: 20px;
+  font-size: small;
+  left: 0px;
+  position:absolute;
+  border: 3px solid rgb(20, 216, 241);
+  border-radius: 7px;
+  color: rgb(158, 15, 51) ;
+}
+#status{
+  background-color: rgb(226, 216, 216);
+  width: 180px;
+  height: 20px;
+  font-size: small;
+position: relative;
+top:66px;
+  border: 3px solid rgb(20, 216, 241);
+  border-radius: 7px;
+  color: rgb(158, 15, 51) ;
+}
+#time{
+  background-color: rgb(226, 216, 216);
+  width: 180px;
+  height: 20px;
+  font-size: small;
+  position: relative;
+ bottom: 7px;
+  border: 3px solid rgb(20, 216, 241);
+  border-radius: 7px;
+  color: rgb(158, 15, 51) ;
 }
 #boxBody{
   width: 300px;
@@ -42,6 +141,7 @@ margin-top: 9rem;
  left: 0px;
  position: fixed;
  top: 0em;
+ z-index: 100;
 }
 #icon{
   width: 200px;

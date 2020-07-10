@@ -136,4 +136,54 @@ function shower() {
   makePageForEpisodes(allEpisodes)
 }
 
-window.onload = setup;
+window.onload = clearEverything;
+///////showList try
+function clearEverything() {
+  rootElem.innerHTML ="";
+ dropDown.style.display = "none";
+ btn.style.display = "none"
+  showListMaker();
+}
+
+console.log(allShows)
+
+
+function showListMaker() {
+  allShows.forEach(show=>{
+  let showSlider = document.getElementById("showSlide")
+let containerBox = document.createElement("div");
+  containerBox.id = "container";
+  let showTitle = document.createElement("h3");
+  showTitle.id = "showTitle";
+  let showImage = document.createElement("img");
+  showImage.id = "image";
+  let showSummary = document.createElement("p");
+  showSummary.id = "summary"
+  let showInfo = document.createElement("div")
+  showInfo.id = "info";
+  let rating = document.createElement("p");
+  rating.id = "rating";
+  let genres = document.createElement("p");
+  genres.id = "genres";
+  let status = document.createElement("p");
+  status.id = "status";
+  let runTime = document.createElement("p");
+  runTime.id = "time";
+
+    showTitle.innerHTML = `${show.name}`;
+    showImage.src = show.image.medium;
+    showSummary.innerHTML = `${show.summary}`
+    rating = `Rating:${show.rating.average}`
+    let reformat = show.genres.toString().replace(/,/g, "|")
+    genres.innerText=`Genres:${reformat}`;
+    status.innerText = `Status:${ show.status}`;
+    runTime.innerText = `Run time:${ show.runtime} minutes`
+     showSlider.appendChild(containerBox)
+     containerBox.append(showTitle,showImage ,showSummary,showInfo )
+     showInfo.append(rating,genres,status,runTime)
+    
+  });
+  
+
+}
+console.log(allShows)
